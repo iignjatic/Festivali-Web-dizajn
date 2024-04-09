@@ -32,11 +32,13 @@ function getFestivals(id /*= "/-MNVEu6iMr2EFlQO6TW60"*/){
 
 function createCard(cardId, festival){
     let cardElement = document.createElement("div");
-    cardElement.classList.add("card","col-3");
-    
+    cardElement.classList.add("card", "col-4", "mx-auto");
+    cardElement.style.width = "25rem";
     
     let cardBody = document.createElement("div");
-    cardBody.classList.add("card-body","align-items-center","text-center","border-success-subtle");
+    cardBody.classList.add("card-body", "align-items-center", "text-center", "border-success-subtle");
+    cardElement.style.marginRight = "25px";
+    cardElement.style.marginBottom = "25px";
 
     let cardTitle = document.createElement("h5");
     cardTitle.classList.add("card-title","m-3","text-success");
@@ -47,10 +49,14 @@ function createCard(cardId, festival){
     cardSubtitle.innerText = "Tip: " + festival.tip + "\n" + "Cijena: " + festival.cena + "\n"
     + "Maksimalno osoba: " + festival.maxOsoba + "\n"+ "Prevoz: "+ festival.prevoz;
 
-
+    let buttonFestival = document.createElement("button");
+    buttonFestival.classList.add("btn","btn-success","m-3");
+    buttonFestival.textContent = "Detalji";
 
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardSubtitle);
+    cardBody.appendChild(buttonFestival);
+
 
     cardElement.appendChild(cardBody);
 
