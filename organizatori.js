@@ -40,6 +40,7 @@ function appendOrganizatorRow(tBody, id, organizator){
     let logoTd = document.createElement("td");
     let logoImg = document.createElement("img");
     logoImg.src = organizator.logo;                        // link za sliku
+    logoImg.setAttribute("width", "70");
     logoTd.appendChild(logoImg); 
     organizatorRow.appendChild(logoTd);
 
