@@ -4,9 +4,9 @@ firebaseUrl = "https://festivali-90667-default-rtdb.firebaseio.com";
 let festivals = {};
 let festival;
 
-let festivalId = getParamValue("id");       //uzima se proslijedjeni kljuc preko dugmeta za organizatora
+let organizatorID = getParamValue("id");       //uzima se proslijedjeni kljuc preko dugmeta za organizatora
 
-getFestivals(festivalId);
+getFestivals(organizatorID);
 
 function getFestivals(id /*= "/-MNVEu6iMr2EFlQO6TW60"*/){
     let request = new XMLHttpRequest();
@@ -18,7 +18,7 @@ function getFestivals(id /*= "/-MNVEu6iMr2EFlQO6TW60"*/){
                 festivals = JSON.parse(request.responseText);
                 for(let key in festivals){
                     festival = festivals[key];
-                    createCard("kartice",festival);     //prave se kartice u sectionu sa idem kartice
+                    createCard("kartice",festival, key);     //prave se kartice u sectionu sa idem kartice
 
                 }
                 console.log(festivals);
@@ -30,13 +30,13 @@ function getFestivals(id /*= "/-MNVEu6iMr2EFlQO6TW60"*/){
     request.send();
 }
 
-function createCard(cardId, festival){
+function createCard(cardId, festival, keyOfFestival ){ //keyOfFestival je kljuc festivala
     let cardElement = document.createElement("div");
     cardElement.classList.add("card", "col-4", "mx-auto");
     cardElement.style.width = "25rem";
     
     let cardBody = document.createElement("div");
-    cardBody.classList.add("card-body", "align-items-center", "text-center", "border-success-subtle");
+    cardBody.classList.add("card-body", "align-items-center","bg-success-subtle" ,"border-dark");
     cardElement.style.marginRight = "25px";
     cardElement.style.marginBottom = "25px";
 
@@ -51,6 +51,10 @@ function createCard(cardId, festival){
 
     let buttonFestival = document.createElement("button");
     buttonFestival.classList.add("btn","btn-success","m-3");
+    buttonFestival.onclick = function(){
+        window.location.href = "pojedinacni_festival.html?id="+organizatorID+"|"+keyOfFestival;     //na stranicu za festival se salje kljuc tog festivala 
+                                                                                                    //za organizatora
+    }
     buttonFestival.textContent = "Detalji";
 
     cardBody.appendChild(cardTitle);

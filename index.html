@@ -7,16 +7,16 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Feẞtivalẞ</title>
 </head>
-<body>
+<body class = "bg-success-subtle bg-gradient ">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <div class="bg-success-subtle bg-gradient">    
+    <!--<div class="bg-success-subtle bg-gradient">    -->
 
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Feẞtivalẞ</a>
+          <a class="navbar-brand" href="index.html">Feẞtivalẞ</a>
           <!--za mobilne telefone-->
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="pocetna.html">Pocetna strana</a>
+                <a class="nav-link active" aria-current="page" href="organizatori.html">Pocetna strana</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Prijavite se</a>
@@ -35,8 +35,9 @@
                   Sadrzaj
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="pocetna.html">Organizatori festivala</a></li>
-                  <li><a class="dropdown-item" href="#">Festivali</a></li>
+                  <li><a class="dropdown-item" href="organizatori.html">Organizatori festivala</a></li>
+                  <li><a class="dropdown-item" href="#">Registrujte se</a></li>
+                  <li><a class = "dropdown-item" href = "izmjena.html">Administratorska stranica</a></li>
                   <li><hr class="dropdown-divider"></li>
                 </ul>
               </li>
@@ -49,7 +50,7 @@
           </div>
         </div>
       </nav>
-      <section id = #main>
+      <section id = main class = "m-2">
         <div class ="text-center">
             <img class = "img-fluid text-center img-hover-zoom" src = "logo.png"></img>
             <h1 class = "text-center"> Feẞtivalẞ </h1>
@@ -58,14 +59,19 @@
 
       
             <a href = "#" class = "btn btn-outline-success btn-lg m-2">Prijava </a>
-            <a href = "pocetna.html" class = "btn btn-outline-success btn-lg m-1">Organizatori festivala</a>
-            <a href = "#" class = "btn btn-outline-success btn-lg m-1">Festivali</a>
+            <a href = "organizatori.html" class = "btn btn-outline-success btn-lg m-1">Organizatori festivala</a>
+            <a href = "#" class = "btn btn-outline-success btn-lg m-1">Registrujte se</a>
 
+        </div>
 
-        </div>    
+      </section>
 
+      <hr style ="color:darkgreen">
+      <blockquote class="blockquote text-md-end m-3">
+        <p style="font-size: 30px;">"Život je jedan veliki festival, a svaki dan je prilika da plešemo."</p>
+        <footer class="blockquote-footer"><cite title="Oprah Winfrey">Oprah Winfrey</cite></footer>
+      </blockquote>
+      
 
-    </section>
-    </div>
 </body>
 </html>
