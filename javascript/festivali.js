@@ -8,17 +8,17 @@ let organizatorID = getParamValue("id");       //uzima se proslijedjeni kljuc pr
 
 getFestivals(organizatorID);
 
-function getFestivals(id /*= "/-MNVEu6iMr2EFlQO6TW60"*/){
+function getFestivals(id /*= "/-MNVEu6iMr2EFlQO6TW60"*/) {
     let request = new XMLHttpRequest();
 
-    request.onreadystatechange = function(){
-        if(this.readyState == 4){
-            if(this.status == 200){
+    request.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
 
                 festivals = JSON.parse(request.responseText);
-                for(let key in festivals){
+                for (let key in festivals) {
                     festival = festivals[key];
-                    createCard("kartice",festival, key);     //prave se kartice u sectionu sa idem kartice
+                    createCard("kartice", festival, key);     //prave se kartice u sectionu sa idem kartice
 
                 }
                 console.log(festivals);
@@ -26,34 +26,34 @@ function getFestivals(id /*= "/-MNVEu6iMr2EFlQO6TW60"*/){
         }
     };
 
-    request.open("GET", firebaseUrl +"/"+ id + ".json");        //uzimaju se kljucevi festivala
+    request.open("GET", firebaseUrl + "/festivali/" + id + ".json");        //uzimaju se kljucevi festivala
     request.send();
 }
 
-function createCard(cardId, festival, keyOfFestival ){ //keyOfFestival je kljuc festivala
+function createCard(cardId, festival, keyOfFestival) { //keyOfFestival je kljuc festivala
     let cardElement = document.createElement("div");
     cardElement.classList.add("card", "col-4", "mx-auto");
     cardElement.style.width = "25rem";
-    
+
     let cardBody = document.createElement("div");
-    cardBody.classList.add("card-body", "align-items-center","bg-success-subtle" ,"border-dark");
+    cardBody.classList.add("card-body", "align-items-center", "bg-success-subtle", "border-dark");
     cardElement.style.marginRight = "25px";
     cardElement.style.marginBottom = "25px";
 
     let cardTitle = document.createElement("h5");
-    cardTitle.classList.add("card-title","m-3","text-success");
+    cardTitle.classList.add("card-title", "m-3", "text-success");
     cardTitle.textContent = festival.naziv;
 
-    let cardSubtitle = document.createElement("h6","my-4");
-    cardSubtitle.classList.add("card-subtitle","text-muted");
+    let cardSubtitle = document.createElement("h6", "my-4");
+    cardSubtitle.classList.add("card-subtitle", "text-muted");
     cardSubtitle.innerText = "Tip: " + festival.tip + "\n" + "Cijena: " + festival.cena + "\n"
-    + "Maksimalno osoba: " + festival.maxOsoba + "\n"+ "Prevoz: "+ festival.prevoz;
+        + "Maksimalno osoba: " + festival.maxOsoba + "\n" + "Prevoz: " + festival.prevoz;
 
     let buttonFestival = document.createElement("button");
-    buttonFestival.classList.add("btn","btn-success","m-3");
-    buttonFestival.onclick = function(){
-        window.location.href = "pojedinacni_festival.html?id="+organizatorID+"|"+keyOfFestival;     //na stranicu za festival se salje kljuc tog festivala 
-                                                                                                    //za organizatora
+    buttonFestival.classList.add("btn", "btn-success", "m-3");
+    buttonFestival.onclick = function () {
+        window.location.href = "pojedinacni_festival.html?id=" + organizatorID + "|" + keyOfFestival;     //na stranicu za festival se salje kljuc tog festivala 
+        //za organizatora
     }
     buttonFestival.textContent = "Detalji";
 
@@ -75,17 +75,17 @@ function getParamValue(name) {          //funkcija koja rastavlja id iz http lin
     let index = location.indexOf("?") + 1;
     let subs = location.substring(index, location.length);
     let splitted = subs.split("&");
-  
+
     for (let i = 0; i < splitted.length; i++) {
-      let s = splitted[i].split("=");
-      let pName = s[0];
-      let pValue = s[1];
-      if (pName == name) {
-        return pValue;
-      }
+        let s = splitted[i].split("=");
+        let pName = s[0];
+        let pValue = s[1];
+        if (pName == name) {
+            return pValue;
+        }
     }
-  }
-  
+}
+
 
 
 
