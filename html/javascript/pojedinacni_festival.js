@@ -16,8 +16,8 @@ function getFestivals(festivalId) {
         if (this.readyState == 4) {
             if (this.status == 200) {
                 festival = JSON.parse(request.responseText);        //preuzima se festival sa atributima
-                createContent("main", festival);
                 console.log(festival);
+                createContent("main", festival);
             }
 
         }

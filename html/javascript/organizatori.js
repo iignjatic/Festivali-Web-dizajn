@@ -100,7 +100,7 @@ function appendOrganizatorRow(tBody, id, organizator) {
         updateButton.classList.add("btn","btn-lg", "btn-success", "mx-auto","right-aligned-button");
         updateButton.textContent = "Izmijeni organizatora";
         updateButton.onclick = function(){
-            window.location.href = "formaIzmjenaOrganizatora.html?id=" + id;       //salje se kljuc za organizatora
+            window.location.href = "formaIzmjenaOrganizatora.html?id=" + id;       
         }
         updateTd.appendChild(updateButton);
 
@@ -115,6 +115,9 @@ function appendOrganizatorRow(tBody, id, organizator) {
         addButton.classList.add("btn","btn-lg", "btn-secondary", "mx-auto","right-aligned-button");
         addButton.style.height = "100%";
         addButton.textContent = "Klikni za uredjivanje festivala";
+        addButton.onclick = function(){
+            window.location.href = "izmjenaFestivala.html?id=" + organizator.festivali + "|" + id;       
+        }
         updateFestival.appendChild(addButton);
 
         festivaliTr.appendChild(updateTd);

@@ -6,11 +6,11 @@ let festival;
 
 let ids = getParamValue("id");       //uzima se proslijedjeni kljuc preko dugmeta za organizatora
 
-let festivalID = ids.split("|")[0];       //uzima se id festivala
-let organizatorID = ids.split("|")[1];    //uzima se id organizatora
+let festivalID = ids.split("|")[1];       //uzima se id festivala
+let organizatorID = ids.split("|")[0];    //uzima se id organizatora
 
 
-getOrganizator(organizatorID);
+getOrganizator(festivalID);
 
 function getOrganizator(id) {
     let request = new XMLHttpRequest();
@@ -23,7 +23,10 @@ function getOrganizator(id) {
                 data.classList.add("bg-success-subtle", "border-dark", "rounded", "p-2", "mx-auto");
 
                 let row = document.createElement("div");   
-                row.classList.add("row", "justify-content-center");
+                row.classList.add("row", "justify-content-center","bg-success-subtle");
+                row.style.position = "sticky";
+                row.style.top = "60px";
+                row.style.zIndex = "2";
 
                 let logo1 = document.createElement("img");
                 logo1.src = "slike/logo.png";
@@ -44,6 +47,8 @@ function getOrganizator(id) {
 
                 let hr = document.createElement("hr");
                 hr.classList.add("mt-2" ,"border-3");
+                hr.style.zIndex = "1";
+
 
                 
 
@@ -70,6 +75,7 @@ function getOrganizator(id) {
                 data.appendChild(phone);
                 data.appendChild(year);
                 data.appendChild(email);
+
                 data.appendChild(address);
 
 
@@ -85,7 +91,7 @@ function getOrganizator(id) {
 }
 
 
-getFestivals(festivalID);
+getFestivals(organizatorID);
 
 function getFestivals(id /*= "/-MNVEu6iMr2EFlQO6TW60"*/) {
     let request = new XMLHttpRequest();
@@ -113,6 +119,7 @@ function createCard(cardId, festival, keyOfFestival) { //keyOfFestival je kljuc 
     let cardElement = document.createElement("div");
     cardElement.classList.add("card", "col-4", "mx-auto");
     cardElement.style.width = "25rem";
+    cardElement.style.border = "3px solid grey";
 
     let cardBody = document.createElement("div");
     cardBody.classList.add("card-body", "align-items-center", "bg-success-subtle", "border-dark");
