@@ -93,22 +93,59 @@ function appendOrganizatorRow(tBody, id, organizator) {
     let festivaliTr = document.createElement("tr");
     festivaliTr.classList.add("text-center", "col-span-3");
 
-     let festivalButton = document.createElement("button");
-     if (tBody == "izmjena1" || tBody == "izmjena2") {
-     festivalButton.textContent = "Izmijeni organizatora";
-     } 
+
+    if (tBody == "izmjena1" || tBody == "izmjena2") {       //kod vezan samo za izmjenu organizatora
+        let updateTd = document.createElement("td");
+        let updateButton = document.createElement("button");
+        updateButton.classList.add("btn","btn-lg", "btn-success", "mx-auto","right-aligned-button");
+        updateButton.textContent = "Izmijeni organizatora";
+        updateButton.onclick = function(){
+            window.location.href = "formaIzmjenaOrganizatora.html?id=" + id;       //salje se kljuc za organizatora
+        }
+        updateTd.appendChild(updateButton);
+
+        let deleteTd = document.createElement("td");
+        let deleteButton = document.createElement("button");
+        deleteButton.classList.add("btn","btn-lg", "btn-danger", "mx-auto","right-aligned-button");
+        deleteButton.textContent = "Obrisi organizatora";
+        deleteTd.appendChild(deleteButton);
+
+        let updateFestival = document.createElement("td");
+        let addButton = document.createElement("button");
+        addButton.classList.add("btn","btn-lg", "btn-secondary", "mx-auto","right-aligned-button");
+        addButton.style.height = "100%";
+        addButton.textContent = "Klikni za uredjivanje festivala";
+        updateFestival.appendChild(addButton);
+
+        festivaliTr.appendChild(updateTd);
+        festivaliTr.appendChild(deleteTd);
+        festivaliTr.appendChild(updateFestival);
+    } 
+
+
+
      else{
-        festivalButton.textContent = "Festivali";
+        let festivaliTd = document.createElement("td");
+        let festivalButton = document.createElement("button");
+        festivalButton.classList.add("btn","btn-lg", "btn-success", "mx-auto","right-aligned-button");
+        festivalButton.textContent = "Festivali";       //inace na stranici sa organizatorima
+        festivaliTd.appendChild(festivalButton);   
+
+        festivalButton.onclick = function FestivalsFunction(){                      //funkcija koja otvara festivale za odredjenog organizatora
+            window.location.href = 'festivali.html?id=' + organizator.festivali + "|" + id;         //salje se na stranicu festivali kljuc za festivale
+     
+             }
+        
+        
+        festivaliTr.appendChild(festivaliTd);
+     
+
         
      }
-     festivalButton.classList.add("btn","btn-lg", "btn-success", "mx-auto","right-aligned-button","mt-3");
-     festivalButton.onclick = function FestivalsFunction(){
-        window.location.href = 'festivali.html?id=' + organizator.festivali;         //salje se na stranicu festivali kljuc za festivale
+    
+                
+
  
-         }
-                 //funkcija koja otvara festivale za odredjenog organizatora
- 
-     festivaliTr.appendChild(festivalButton);
  
 
     document.getElementById(tBody).appendChild(hr);     

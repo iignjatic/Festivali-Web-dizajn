@@ -47,7 +47,7 @@ function createContent(tbody, user){
     td1.textContent = "Ime";
     td2.textContent = "Prezime";
     td3.textContent = "Email";
-    td4.textContent = "Korisnicko ime";
+    td4.textContent = "K. ime";
     td5.textContent = "Lozinka";
 
     firstHeader.appendChild(td1);
@@ -62,8 +62,8 @@ function createContent(tbody, user){
     let td6 = document.createElement("td");
     let td7 = document.createElement("td");
     let td8 = document.createElement("td");
+    td8.setAttribute("colspan", "2");
     let td9 = document.createElement("td");
-    let td10 = document.createElement("td");
 
     td6.textContent = "Telefon";
     td7.textContent = "Zanimanje";
@@ -71,14 +71,12 @@ function createContent(tbody, user){
     td9.textContent = "Datum rodjenja";
     
   
-    td10.textContent = "Izmjena";
 
 
     secondHeader.appendChild(td6);
     secondHeader.appendChild(td7);
     secondHeader.appendChild(td8);
     secondHeader.appendChild(td9);
-    secondHeader.appendChild(td10);
 
     let userRow = document.createElement("tr");
     let dataRow = document.createElement("tr");
@@ -119,6 +117,7 @@ function createContent(tbody, user){
     
 
     let address = document.createElement("td");
+    address.setAttribute("colspan", "2");
     address.textContent =   user.adresa;
     dataRow.appendChild(address);
 
@@ -126,16 +125,27 @@ function createContent(tbody, user){
     birth.textContent = user.datumRodjenja;
     dataRow.appendChild(birth);
 
+    let updateData = document.createElement("td");
     let button = document.createElement("button");
-    button.classList.add("btn", "btn-success", "btn-lg","mx-auto","right-aligned-button");
-    button.style.width = "100%";
-    button.style.height = "100%";
+    button.classList.add("btn", "btn-success", "btn-lg","mx-auto");
     button.textContent = "Izmijeni korisnika";
     button.onclick = function(){
         window.location.href = "formaIzmjenaKorisnika.html";
     }
+    updateData.appendChild(button);
 
-    dataRow.appendChild(button);
+
+    let ButtonRow = document.createElement("tr");
+    let deleteData = document.createElement("td");
+    let deleteButton = document.createElement("button");
+    deleteButton.classList.add("btn", "btn-danger", "btn-lg","mx-auto","right-aligned-button");
+    deleteButton.textContent = "Obrisi korisnika";
+    deleteData.appendChild(deleteButton);
+    ButtonRow.appendChild(updateData);
+    ButtonRow.appendChild(deleteData);
+
+    let newLine1 = document.createElement("hr");
+    newLine1.classList.add("mt-3", "border-3");
 
 
     document.getElementById(tbody).appendChild(firstHeader);
@@ -143,6 +153,8 @@ function createContent(tbody, user){
     document.getElementById(tbody).appendChild(secondHeader);
     document.getElementById(tbody).appendChild(dataRow);
     document.getElementById(tbody).appendChild(newLine);
+    document.getElementById(tbody).appendChild(ButtonRow);
+    document.getElementById(tbody).appendChild(newLine1);
 
 
    
