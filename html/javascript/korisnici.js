@@ -25,9 +25,13 @@ function getUsers(){
                 }
                 whichTable *= -1;
             }
-            };
+        
+        }
+        else{
+            window.location.href = "greska.html";
         }
     }
+    };
     request.open("GET", firebaseUrl + "/korisnici.json");
     request.send();
 }

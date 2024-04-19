@@ -17,7 +17,7 @@ function getOrganizator(id) {
 
     request.onreadystatechange = function () {
         if (this.readyState == 4) {
-            if (this.status == 200) {
+            if(this.status == 200) {
                 let organizator = JSON.parse(request.responseText);
                 let data = document.createElement("div");
                 data.classList.add("bg-success-subtle", "border-dark", "rounded", "p-2", "mx-auto");
@@ -82,8 +82,11 @@ function getOrganizator(id) {
                 data.appendChild(hr1);
 
                 document.getElementById("organizator").appendChild(data);
-            }
         }
+        else {
+            window.location.href = "greska.html";
+        }
+    }
     };
 
     request.open("GET", firebaseUrl + "/organizatoriFestivala/" + id + ".json");
@@ -97,8 +100,8 @@ function getFestivals(id /*= "/-MNVEu6iMr2EFlQO6TW60"*/) {
     let request = new XMLHttpRequest();
 
     request.onreadystatechange = function () {
-        if (this.readyState == 4) {
-            if (this.status == 200) {
+        if (this.readyState == 4){
+            if(this.status == 200) {
 
                 festivals = JSON.parse(request.responseText);
                 for (let key in festivals) {
@@ -107,6 +110,10 @@ function getFestivals(id /*= "/-MNVEu6iMr2EFlQO6TW60"*/) {
 
                 }
                 console.log(festivals);
+            
+        }
+            else {
+                window.location.href = "greska.html";
             }
         }
     };

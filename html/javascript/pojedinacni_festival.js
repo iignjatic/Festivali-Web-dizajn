@@ -19,6 +19,9 @@ function getFestivals(festivalId) {
                 console.log(festival);
                 createContent("main", festival);
             }
+            else {
+                window.location.href = "greska.html";
+            }
 
         }
     };

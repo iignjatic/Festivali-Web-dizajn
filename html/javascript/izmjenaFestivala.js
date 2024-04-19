@@ -18,7 +18,7 @@ function getFestivals(id /*= "/-MNVEu6iMr2EFlQO6TW60"*/) {
 
     request.onreadystatechange = function () {
         if (this.readyState == 4) {
-            if (this.status == 200) {
+            if(this.status == 200){
 
                 festivals = JSON.parse(request.responseText);
                 for (let key in festivals) {
@@ -27,6 +27,10 @@ function getFestivals(id /*= "/-MNVEu6iMr2EFlQO6TW60"*/) {
 
                 }
                 console.log(festivals);
+            
+        }
+            else {
+                window.location.href = "greska.html";
             }
         }
     };

@@ -39,11 +39,14 @@ function getAllOrganizators() {
     
                     whichTable *= -1;
                 }
-            };
+            }
+            else {
+                window.location.href = "greska.html";
+            }
         }
 
 
-    }
+    };
     request.open("GET", firebaseUrl + "/organizatoriFestivala.json");       //uzimaju se kljucevi ispod organizatora festivala
     request.send();
 }
