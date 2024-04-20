@@ -10,3 +10,14 @@ Sastoji se od:
   (pristupa im se preko navbara-->sadrzaj)</li>
   
 </ul>
+
+<strong>
+Pocetna strana ==> index.html
+
+<h2>Tehnologije</h2>
+<ol>
+  <li>HTML 5</li>
+  <li>CSS</li>
+  <li>Bootstrap</li>
+  <li>JavaScript</li>
+</ol>
