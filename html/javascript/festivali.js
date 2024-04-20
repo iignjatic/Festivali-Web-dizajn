@@ -36,7 +36,7 @@ function getOrganizator(id) {
                 let name = document.createElement("h1");
                 name.classList.add("display-3");
                 name.textContent = organizator.naziv;
-                name.classList.add("col-md-4", "col-sm-2");
+                name.classList.add("col-md-4", "col-sm-2","mt-4");
 
                 row.appendChild(name);
 

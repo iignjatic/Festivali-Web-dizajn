@@ -35,7 +35,7 @@ function getFestivals(festivalId) {
 
 function createContent(main, festival) {
     let mainTitle = document.createElement("div");              //kreiranje naslova
-    mainTitle.classList.add("display-2", "text-center", "text-dark", "mt-3");
+    mainTitle.classList.add("display-3", "text-center", "text-dark");
     mainTitle.textContent = festival.naziv;
     let mainLine1 = document.createElement("hr");
     mainLine1.classList.add("mt-3")
