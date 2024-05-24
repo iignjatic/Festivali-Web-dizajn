@@ -102,10 +102,19 @@ function appendOrganizatorRow(tBody, id, organizator) {
         let updateButton = document.createElement("button");
         updateButton.classList.add("btn","btn-lg", "btn-success", "mx-auto","right-aligned-button");
         updateButton.textContent = "Izmijeni organizatora";
+
+
         updateButton.onclick = function(){
-            window.location.href = "formaIzmjenaOrganizatora.html?id=" + id;       
+            window.location.href = "formaIzmjenaOrganizatora.html?id=" + id;  
+
+        
+     
+            
         }
+        
         updateTd.appendChild(updateButton);
+
+        
 
         let deleteTd = document.createElement("td");
         let deleteButton = document.createElement("button");
@@ -126,9 +135,11 @@ function appendOrganizatorRow(tBody, id, organizator) {
         festivaliTr.appendChild(updateTd);
         festivaliTr.appendChild(deleteTd);
         festivaliTr.appendChild(updateFestival);
+
     } 
 
 
+        
 
      else{
         let festivaliTd = document.createElement("td");
@@ -150,10 +161,7 @@ function appendOrganizatorRow(tBody, id, organizator) {
      }
     
                 
-
  
- 
-
     document.getElementById(tBody).appendChild(hr);     
     document.getElementById(tBody).appendChild(organizatorRow);     //id za tabelu gdje se unose podaci u tbody tagu
     document.getElementById(tBody).appendChild(newLine);

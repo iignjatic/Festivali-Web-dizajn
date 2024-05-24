@@ -18,10 +18,10 @@ function getUsers(){
                    let user = users[key];
 
                 if (whichTable == 1) {
-                    createContent("izmjenaKorisnika1", user);       //dodaje se u tabelu
+                    createContent("izmjenaKorisnika1", user, key);       //dodaje se u tabelu
                 }
                 else{
-                    createContent("izmjenaKorisnika2", user);
+                    createContent("izmjenaKorisnika2", user,key);
                 }
                 whichTable *= -1;
             }
@@ -36,7 +36,7 @@ function getUsers(){
     request.send();
 }
 
-function createContent(tbody, user){
+function createContent(tbody, user, key){
     let newLine = document.createElement("hr");
     newLine.classList.add("mt-3", "border-3");
 
@@ -105,7 +105,6 @@ function createContent(tbody, user){
     password.textContent = user.lozinka ;
     userRow.appendChild(password);
 
- 
 
     
 
@@ -134,7 +133,7 @@ function createContent(tbody, user){
     button.classList.add("btn", "btn-success", "btn-lg","mx-auto");
     button.textContent = "Izmijeni korisnika";
     button.onclick = function(){
-        window.location.href = "formaIzmjenaKorisnika.html";
+        window.location.href = "formaIzmjenaKorisnika.html?id=" + key;
     }
     updateData.appendChild(button);
 
@@ -144,6 +143,9 @@ function createContent(tbody, user){
     let deleteButton = document.createElement("button");
     deleteButton.classList.add("btn", "btn-danger", "btn-lg","mx-auto","right-aligned-button");
     deleteButton.textContent = "Obrisi korisnika";
+    deleteButton.onclick = function() {
+        deleteUser(key);
+    };
     deleteData.appendChild(deleteButton);
     ButtonRow.appendChild(updateData);
     ButtonRow.appendChild(deleteData);
@@ -161,6 +163,26 @@ function createContent(tbody, user){
     document.getElementById(tbody).appendChild(newLine1);
 
 
-   
-
 }
+
+function deleteUser(id) {
+
+    if (!confirm("Da li ste sigurni da želite obrisati ovog korisnika?")) {
+        return;
+    }
+    let request = new XMLHttpRequest();
+  
+    request.onreadystatechange = function () {
+      if (this.readyState == 4) {
+        if (this.status == 200) {
+        } else {
+          alert("Greška prilikom brisanja korisnika.");
+        }
+      }
+    };
+
+    
+  
+    request.open("DELETE", firebaseUrl + "/korisnici/" + id + ".json");
+    request.send();
+  }
