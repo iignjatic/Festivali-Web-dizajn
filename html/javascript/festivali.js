@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function() {
     addFestivalForm.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        let name = document.getElementById("name").value;
+        let name_f = document.getElementById("name_f").value;
         let type = document.getElementById("type").value;
         let transport = document.getElementById("transport").value;
         let persons = document.getElementById("persons").value;
@@ -196,11 +196,11 @@ document.addEventListener("DOMContentLoaded", function() {
             isValid = false;
         }
         
-        if (name != "") {
-            document.getElementById('nameValidReg').innerText = "";
+        if (name_f != "") {
+            document.getElementById('nameValid').innerText = "";
             isValid = true;
         } else {
-            document.getElementById('nameValidReg').innerText = "Ime ne smije biti prazno.";
+            document.getElementById('nameValid').innerText = "Ime ne smije biti prazno.";
             isValid = false;        
         }
         

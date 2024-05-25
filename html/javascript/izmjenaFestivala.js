@@ -32,7 +32,7 @@ function getFestivals(id /*= "/-MNVEu6iMr2EFlQO6TW60"*/) {
                     addFestival.classList.add("btn","btn-lg", "col-3", "btn-success", "m-3");
                     addFestival.textContent = "Dodaj festival";
                     addFestival.onclick = function () {
-                        window.location.href = "formaZaFestival.html?"+organizatorID;      
+                        window.location.href = "formaZaFestival.html?id="+organizatorID+"|"+festivalID;      
                     };
                     document.getElementById('addButton').appendChild(addFestival);
 
