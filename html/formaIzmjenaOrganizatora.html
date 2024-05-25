@@ -175,15 +175,7 @@
     </div>
   </div>
   </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-        Zatvori</button>
-        <button type="submit" id="addUser" class="btn btn-outline-success">Registracija</button>
-      </div>
-    </div>
-  </div>
-</div>
+     
 
             <div class = "row justify-content-center">
 
@@ -191,36 +183,43 @@
 
                 <div class = "col-md-6 col-sm-8">
 
-                    <form class="row m-4 p-3" style="background-color:whitesmoke; border-radius: 10px;">
+                    <form class="row m-4 p-3" id = "editOrganizator" style="background-color:whitesmoke; border-radius: 10px;">
                         <div class = "col-md-6">
-                            <label for="logo" class="form-label">Logo</label>
+                            <label for="logo_org" class="form-label">Logo</label>
                             <input type="text" class="form-control" id="logo_org">
+                            <p id="logoValid" style="font-size:x-small;color:brown"></p>
                         </div>    
                         <div class="col-md-6">
-                            <label for="name" class="form-label">Naziv</label>
+                            <label for="name_org" class="form-label">Naziv</label>
                             <input type="text" class="form-control" id="name_org">
+                            <p id="nameValid" style="font-size:x-small;color:brown"></p>
                         </div>
                         <div class = "col-md-6">
-                            <label for = "phone" class = "form-label">Kontakt telefon</label>
+                            <label for = "phone_org" class = "form-label">Kontakt telefon</label>
                             <input type = "text" class = "form-control" id = "phone_org">
+                            <p id="phoneValid" style="font-size:x-small;color:brown"></p>
                         </div>
                         <div class = "col-md-6">
-                            <label for = "year" class = "form-label">Godina osnivanja</label>
+                            <label for = "year_org" class = "form-label">Godina osnivanja</label>
                             <input type = "number" class = "form-control" id = "year_org">
+                            <p id="yearValid" style="font-size:x-small;color:brown"></p>
                         </div>
                         <div class="col-md-8">
-                        <label for="email" class="form-label">Email</label>
+                        <label for="email_org" class="form-label">Email</label>
                         <input type="email" class="form-control" id="email_org">
+                        <p id="emailValid" style="font-size:x-small;color:brown"></p>
                         </div>
                         
                         <div class="col-8">
-                        <label for="address" class="form-label">Adresa</label>
+                        <label for="address_org" class="form-label">Adresa</label>
                         <input type="text" class="form-control" id="address_org">
+                        <p id="addressValid" style="font-size:x-small;color:brown"></p>
                         </div>
 
                         <div class = "col-12">
-                            <label for = "festival" class = "form-label">Festivali</label>
+                            <label for = "festival_org" class = "form-label">Festivali</label>
                             <input type = "text" class = "form-control" id = "festival_org">
+                            <p id="festivalValid" style="font-size:x-small;color:brown"></p>
                         </div>
                         
                       <div class = "row">  

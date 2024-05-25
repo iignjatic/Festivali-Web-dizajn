@@ -106,9 +106,6 @@ function appendOrganizatorRow(tBody, id, organizator) {
 
         updateButton.onclick = function(){
             window.location.href = "formaIzmjenaOrganizatora.html?id=" + id;  
-
-        
-     
             
         }
         
@@ -120,7 +117,11 @@ function appendOrganizatorRow(tBody, id, organizator) {
         let deleteButton = document.createElement("button");
         deleteButton.classList.add("btn","btn-lg", "btn-danger", "mx-auto","right-aligned-button");
         deleteButton.textContent = "Obrisi organizatora";
+        deleteButton.onclick = function() {
+            deleteOrganizator(id);
+        };
         deleteTd.appendChild(deleteButton);
+       
 
         let updateFestival = document.createElement("td");
         let addButton = document.createElement("button");
@@ -169,6 +170,29 @@ function appendOrganizatorRow(tBody, id, organizator) {
 
         
 }
+
+function deleteOrganizator(id) {
+
+    if (!confirm("Da li ste sigurni da želite obrisati ovog organizatora?")) {
+        return;
+    }
+    let request = new XMLHttpRequest();
+  
+    request.onreadystatechange = function () {
+      if (this.readyState == 4) {
+        if (this.status == 200) {
+        } else {
+          alert("Greška prilikom brisanja organizatora.");
+        }
+      }
+    };
+
+    
+  
+    request.open("DELETE", firebaseUrl + "/organizatoriFestivala/" + id + ".json");
+    request.send();
+  }
+
 
 
 

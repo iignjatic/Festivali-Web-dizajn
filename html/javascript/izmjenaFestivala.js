@@ -26,6 +26,17 @@ function getFestivals(id /*= "/-MNVEu6iMr2EFlQO6TW60"*/) {
                     createCard("kartice", festival, key);     //prave se kartice u sectionu sa idem kartice
 
                 }
+                
+                    
+                    let addFestival = document.createElement("button");
+                    addFestival.classList.add("btn","btn-lg", "col-3", "btn-success", "m-3");
+                    addFestival.textContent = "Dodaj festival";
+                    addFestival.onclick = function () {
+                        window.location.href = "formaZaFestival.html?"+organizatorID;      
+                    };
+                    document.getElementById('addButton').appendChild(addFestival);
+
+            
                 console.log(festivals);
             
         }
@@ -59,24 +70,19 @@ function createCard(cardId, festival, keyOfFestival) { //keyOfFestival je kljuc 
         + "Maksimalno osoba: " + festival.maxOsoba + "\n" + "Prevoz: " + festival.prevoz;
 
 
-    let addFestival = document.createElement("button");
-    addFestival.classList.add("btn","btn-lg", "col-6", "btn-success", "m-3");
-    addFestival.onclick = function () {
-        window.location.href = "formaZaFestival.html?id=" + organizatorID + "|" + keyOfFestival;      
-    }
-    addFestival.textContent = "Dodaj festival";
 
     let deleteFestival = document.createElement("button");
     deleteFestival.classList.add("btn","btn-lg", "col-6","btn-danger", "m-1");
-    deleteFestival.onclick = function () {
-        window.location.href = "brisanjeFestivala.html?id=" + organizatorID + "|" + keyOfFestival;      
-    }
     deleteFestival.textContent = "Obrisi festival";
+    deleteFestival.onclick = function() {
+        deleteFestivals(keyOfFestival);
+    };
+   
+
 
 
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardSubtitle);
-    cardBody.appendChild(addFestival);
     cardBody.appendChild(deleteFestival);
 
 
@@ -85,6 +91,29 @@ function createCard(cardId, festival, keyOfFestival) { //keyOfFestival je kljuc 
 
     document.getElementById(cardId).appendChild(cardElement);
 }
+
+
+function deleteFestivals(id) {
+
+    if (!confirm("Da li ste sigurni da želite obrisati ovaj festival?")) {
+        return;
+    }
+    let request = new XMLHttpRequest();
+  
+    request.onreadystatechange = function () {
+      if (this.readyState == 4) {
+        if (this.status == 200) {
+        } else {
+          alert("Greška prilikom brisanja festivala.");
+        }
+      }
+    };
+
+    
+  
+    request.open("DELETE", firebaseUrl + "/festivali/" + organizatorID +"/"+id+ ".json");
+    request.send();
+  }
 
 
 

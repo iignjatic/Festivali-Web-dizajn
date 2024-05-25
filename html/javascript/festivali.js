@@ -163,6 +163,114 @@ function createCard(cardId, festival, keyOfFestival) { //keyOfFestival je kljuc 
 
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    let addFestivalForm = document.getElementById("addForm");
+
+    addFestivalForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        let name = document.getElementById("name").value;
+        let type = document.getElementById("type").value;
+        let transport = document.getElementById("transport").value;
+        let persons = document.getElementById("persons").value;
+        let price = document.getElementById("price").value;
+        let picture = document.getElementById("picture").value;
+        let description = document.getElementById("description").value;
+   
+
+        let isValid = true;
+    
+        if (type != "") {
+            document.getElementById('typeValid').innerText = "";
+            isValid = true;
+        } else {
+            document.getElementById('typeValid').innerText = "Polje tip ne smije biti prazno.";
+            isValid = false;            
+        }
+        
+        if (transport != "") {
+            document.getElementById('transportValid').innerText = "";
+            isValid = true;
+        } else {
+            document.getElementById('transportValid').innerText = "Transport polje ne smije biti prazno.";
+            isValid = false;
+        }
+        
+        if (name != "") {
+            document.getElementById('nameValidReg').innerText = "";
+            isValid = true;
+        } else {
+            document.getElementById('nameValidReg').innerText = "Ime ne smije biti prazno.";
+            isValid = false;        
+        }
+        
+        if (persons != "" && persons > 0 && isNaN(persons) == false) {
+            document.getElementById('personsValid').innerText = "";
+            isValid = true;
+        } else {
+            document.getElementById('personsValid').innerText = "Broj ljudi mora biti broj veci od 0.";
+            isValid = false;           
+        }  
+        
+        
+        if (price != "" && price > 0 && isNaN(price) == false) {
+            document.getElementById('priceValid').innerText = "";
+            isValid = true;
+        } else {
+            document.getElementById('priceValid').innerText = "Cijena mora biti broj veci od 0.";
+            isValid = false;            
+        }
+        
+        if (picture != "") {
+            document.getElementById('pictureValid').innerText = "";
+            isValid = true;
+        } else {
+            document.getElementById('pictureValid').innerText = "Polje za sliku ne smije biti prazno.";
+            isValid = false;            
+        }    
+        
+        if (description != "") {
+            document.getElementById('descriptionValid').innerText = "";
+            isValid = true;
+        } else {
+            document.getElementById('descriptionValid').innerText = "Opis polje ne smije biti prazno.";
+            isValid = false;            
+        }
+        
+        if (!isValid) {
+                return;
+            }    
+        
+
+        let newFestival = {
+            naziv: name,
+            tip: type,
+            prevoz: transport,
+            maxOsoba: parseInt(persons),
+            cena: parseFloat(price),
+            slika: picture,
+            opis: description
+        };
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://festivali-90667-default-rtdb.firebaseio.com/festivali/"+organizatorID+".json", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                alert("Festival je uspješno dodat!");
+            } else {
+            alert("Greška prilikom dodavanja festivala.");
+        }
+        };
+        xhr.send(JSON.stringify(newFestival));
+    });
+});
+
+
+
+
+
+
 function getParamValue(name) {          //funkcija koja rastavlja id iz http linka
     let location = decodeURI(window.location.toString());
     let index = location.indexOf("?") + 1;
