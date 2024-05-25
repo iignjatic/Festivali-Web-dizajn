@@ -106,7 +106,7 @@ function createCard(cardId, festival, keyOfFestival, name, type) { //keyOfFestiv
 
     let cardSubtitle = document.createElement("h6");
     cardSubtitle.classList.add("my-4", "card-subtitle", "text-muted");
-    cardSubtitle.textContent = "Tip: ";
+    cardSubtitle.textContent = "Tip: " + "\n";
     
     if (typeof type !== "undefined" && type !=="") {
         if (festival.tip.toLowerCase().includes(type.toLowerCase())) {
@@ -120,13 +120,12 @@ function createCard(cardId, festival, keyOfFestival, name, type) { //keyOfFestiv
         cardSubtitle.textContent += festival.tip;
     }
     
-    let additionalInfo = `
-    Cijena: ${festival.cena}
-    Maksimalno osoba: ${festival.maxOsoba}
-    Prevoz: ${festival.prevoz}
-    `;
+    let additionalInfo = document.createElement("p");
+    additionalInfo.innerText = "Cijena:" + festival.cena +"\n"+
+    "Maksimalno osoba:"+ festival.maxOsoba +"\n"
+    +"Prevoz:"+ festival.prevoz;
     
-    cardSubtitle.appendChild(document.createTextNode(additionalInfo));
+    cardSubtitle.appendChild(additionalInfo);
     
     let buttonFestival = document.createElement("button");
     buttonFestival.classList.add("btn", "btn-success", "m-3");
