@@ -54,15 +54,15 @@ document.addEventListener("DOMContentLoaded", function() {
         // sprjecavanje slanja forme na server prije provjere
         e.preventDefault();
 
-        let usernameInput = document.getElementById('username').value;
-        let passwordInput = document.getElementById('password').value;
-        let nameInput = document.getElementById('name').value;
-        let surnameInput = document.getElementById('surname').value;
-        let emailInput = document.getElementById('email').value;
-        let phoneInput = document.getElementById('phone').value;
-        let addressInput = document.getElementById('address').value;
-        let dateInput = document.getElementById('date').value;
-        let roleInput = document.getElementById('role').value;
+        let usernameInput = document.getElementById('username_us').value;
+        let passwordInput = document.getElementById('password_us').value;
+        let nameInput = document.getElementById('name_us').value;
+        let surnameInput = document.getElementById('surname_us').value;
+        let emailInput = document.getElementById('email_us').value;
+        let phoneInput = document.getElementById('phone_us').value;
+        let addressInput = document.getElementById('address_us').value;
+        let dateInput = document.getElementById('date_us').value;
+        let roleInput = document.getElementById('role_us').value;
 
         let isValid = true;
     
